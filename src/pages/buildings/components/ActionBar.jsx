@@ -11,7 +11,9 @@ export default function ActionBar({ title, formData }) {
       </div>
       <div className="flex gap-x-4">
         <Button style="secondary">Publish</Button>
-        <Button style="secondary">View</Button>
+        <Button onClick={() => console.log(formData)} style="secondary">
+          View
+        </Button>
         <div className="">
           <button
             className={`bg-button-secondary text-primar px-3 rounded-tl rounded-bl text-[14px] h-[32.6px]`}

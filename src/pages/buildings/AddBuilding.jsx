@@ -16,7 +16,7 @@ export default function AddBuilding(props) {
   return (
     <>
       <div className="pt-12 mx-6 w-full sm:block hidden">
-        <ActionBar title={props.type=='edit' ? '' : "Add Building"} />                             
+        <ActionBar title={props.type == "edit" ? "Add Building" : ""} />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
             <InformationCard />
@@ -24,9 +24,7 @@ export default function AddBuilding(props) {
             <AmenitiesCard />
           </div>
           <div>
-            <StatusCard 
-              items={['Active', 'Draft']}
-            />
+            <StatusCard items={["Active", "Draft"]} />
             <AmenitiesSelectCard />
             <ThumbnailCard />
           </div>

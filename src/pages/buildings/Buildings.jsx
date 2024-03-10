@@ -7,8 +7,11 @@ import AmenitiesSelectCard from "./components/AmenitiesSelectCard";
 import StatusCard from "./components/StatusCard";
 import ThumbnailCard from "./components/ThumbnailCard";
 import Buildings_Mobile from "./Buildings_Mobile";
+import { useState } from "react";
 
 export default function Buildings() {
+  const [formData, setFormData] = useState({});
+
   return (
     <>
       <div className="pt-4 sm:pt-12 mx-6 w-full hidden sm:block">
@@ -20,9 +23,7 @@ export default function Buildings() {
             <AmenitiesCard />
           </div>
           <div>
-            <StatusCard 
-            items={['Active', 'Draft']}
-            />
+            <StatusCard items={["Active", "Draft"]} />
             <AmenitiesSelectCard />
             <ThumbnailCard />
           </div>

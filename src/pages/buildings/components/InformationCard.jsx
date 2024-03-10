@@ -7,7 +7,7 @@ export default function InformationCard({ formData, updateField }) {
       {/* start of information */}
       <div>
         <div className="text-[14px] sm:text-[16px] mt-2">Building Name</div>
-        {/* { defaultValue, backgroundColor, onChange, value } */}
+
         <Input
           value={formData?.building_name}
           onChange={(e) => {
@@ -17,7 +17,12 @@ export default function InformationCard({ formData, updateField }) {
       </div>
       <div className="mt-4">
         <div className="text-[14px] sm:text-[16px] mt-2">Address</div>
-        <Input />
+        <Input
+          value={formData?.address}
+          onChange={(e) => {
+            updateField("address", e.target.value);
+          }}
+        />
       </div>
       {/* start of numerical information */}
       <div className="mt-4 flex justify-between w-full">
@@ -26,7 +31,12 @@ export default function InformationCard({ formData, updateField }) {
             Building Stories
           </div>
           <div className="max-w-[100px]">
-            <Input />
+            <Input
+              value={formData?.floor}
+              onChange={(e) => {
+                updateField("floor", e.target.value);
+              }}
+            />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-start md:items-center">
@@ -34,7 +44,12 @@ export default function InformationCard({ formData, updateField }) {
             Year Built
           </div>
           <div className="max-w-[100px]">
-            <Input />
+            <Input
+              value={formData?.year_of_build}
+              onChange={(e) => {
+                updateField("year_of_build", e.target.value);
+              }}
+            />
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-start md:items-center">
@@ -42,7 +57,12 @@ export default function InformationCard({ formData, updateField }) {
             Total Units
           </div>
           <div className="max-w-[100px]">
-            <Input />
+            <Input
+              value={formData?.total_units}
+              onChange={(e) => {
+                updateField("total_units", e.target.value);
+              }}
+            />
           </div>
         </div>
       </div>
@@ -53,6 +73,10 @@ export default function InformationCard({ formData, updateField }) {
           rows={8}
           multiple={true}
           className="text-[14px] px-3 py-1 mt-2 border border-primary focus:border-gray-400 w-full text-dark rounded-lg outline-none"
+          value={formData?.description}
+          onChange={(e) => {
+            updateField("description", e.target.value);
+          }}
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Buildings() {
   return (
     <>
       <div className="pt-4 sm:pt-12 mx-6 w-full hidden sm:block">
-        <ActionBar />
+        <ActionBar formData={formData} />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
             <InformationCard />

@@ -3,10 +3,12 @@ import Button from "../../../components/Button/Button";
 import left_arrow from "../../../assets/left_arrow.png";
 import right_arrow from "../../../assets/right_arrow.png";
 
-export default function ActionBar({ title }) {
+export default function ActionBar({ title, formData }) {
   return (
     <div className="flex items-center w-full justify-between max-sm:justify-end max-sm:pr-[15px]">
-      <div className="text-[16px] sm:text-[26px] font-semibold max-sm:hidden sm:leading-[80%]">{title}</div>
+      <div className="text-[16px] sm:text-[26px] font-semibold max-sm:hidden sm:leading-[80%]">
+        {title}
+      </div>
       <div className="flex gap-x-4">
         <Button style="secondary">Publish</Button>
         <Button style="secondary">View</Button>

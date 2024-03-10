@@ -20,7 +20,7 @@ export default function AddBuilding(props) {
     floors: "",
     total_units: "",
     year_of_build: "",
-    status: "",
+    status: "Active",
     description: "",
     thumbnail: "",
   });
@@ -38,7 +38,7 @@ export default function AddBuilding(props) {
             <AmenitiesCard />
           </div>
           <div>
-            <StatusCard items={["Active", "Draft"]} />
+            <StatusCard items={["Active", "Draft"]}  formData={formData} updateField={updateField}/>
             <AmenitiesSelectCard />
             <ThumbnailCard />
           </div>

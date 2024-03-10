@@ -1,0 +1,5 @@
+.active-tab {
+  color: #E5E7EB; /* Tailwind color gray-200 */
+  background-color: #000000; /* Tailwind color black */
+  border-radius: 6px; /* Full pill shape */
+}

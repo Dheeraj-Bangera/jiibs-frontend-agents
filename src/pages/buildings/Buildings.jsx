@@ -7,27 +7,15 @@ import AmenitiesSelectCard from "./components/AmenitiesSelectCard";
 import StatusCard from "./components/StatusCard";
 import ThumbnailCard from "./components/ThumbnailCard";
 import Buildings_Mobile from "./Buildings_Mobile";
-import { useFormState } from "../../hooks/useFormState";
 
 export default function Buildings() {
-  const [formData, updateField] = useFormState({
-    building_name: "",
-    address: "",
-    floors: "",
-    total_units: "",
-    year_of_build: "",
-    status: "",
-    description: "",
-    thumbnail: "",
-  });
-
   return (
     <>
       <div className="pt-4 sm:pt-12 mx-6 w-full hidden sm:block">
-        <ActionBar formData={formData} />
+        <ActionBar />
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
-            <InformationCard formData={formData} updateField={updateField} />
+            <InformationCard />
             <MediaCard />
             <AmenitiesCard />
           </div>
@@ -39,7 +27,7 @@ export default function Buildings() {
         </div>
       </div>
       <div className="block sm:hidden w-full">
-        <Buildings_Mobile formData={formData} updateField={updateField} />
+        <Buildings_Mobile />
       </div>
     </>
   );

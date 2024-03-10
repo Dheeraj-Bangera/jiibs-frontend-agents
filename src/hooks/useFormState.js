@@ -7,3 +7,5 @@ function useFormState(initialState) {
   };
   return [formData, updateField];
 }
+
+export default useFormState

@@ -9,11 +9,9 @@ export default function InformationCard({ formData, updateField }) {
         <div className="text-[14px] sm:text-[16px] mt-2">Building Name</div>
         {/* { defaultValue, backgroundColor, onChange, value } */}
         <Input
-          defaultValue=""
           value={formData?.building_name}
           onChange={(e) => {
             updateField("building_name", e.target.value);
-            console.log(formData);
           }}
         />
       </div>

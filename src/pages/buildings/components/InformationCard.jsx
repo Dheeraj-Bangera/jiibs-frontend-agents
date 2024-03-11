@@ -33,9 +33,9 @@ export default function InformationCard({ formData, updateField }) {
           </div>
           <div className="max-w-[100px]">
             <Input
-              value={formData?.floor}
+              value={formData?.floors}
               onChange={(e) => {
-                updateField("floor", e.target.value);
+                updateField("floors", e.target.value);
               }}
             />
           </div>

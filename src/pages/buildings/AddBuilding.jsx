@@ -14,6 +14,8 @@ import SECard from "./BuildingAmenities/components/SECard";
 import useFormState from "../../hooks/useFormState";
 
 export default function AddBuilding(props) {
+  // userData is temporary , will be replaced when authentication is complete,
+  //  this will automatically come from jwt verify, remove when auth is done 
   const [formData, updateField] = useFormState({
     building_name: "",
     address: "",
@@ -23,6 +25,7 @@ export default function AddBuilding(props) {
     status: "Active",
     description: "",
     thumbnail: "",
+    userData:{id:"65e0d757790c1e6bb8281100"}
   });
   return (
     <>

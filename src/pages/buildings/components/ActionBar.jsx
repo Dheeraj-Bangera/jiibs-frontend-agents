@@ -8,6 +8,7 @@ export default function ActionBar({ title, formData }) {
   const postData =async ()=>{
     console.log(formData);
     const newFormData = new FormData();
+    newFormData.append(`building_name`, `${formData.building_name}`);
     for (let key in formData) {
       if (typeof formData[key] === "object" && formData[key] !== null) {
           newFormData.append(key, JSON.stringify(formData[key]));

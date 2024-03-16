@@ -2,8 +2,16 @@ import React, {useState} from "react";
 import MediaCardComponent from "./MediaCardComponent";
 import ImageAddComponent from "../../../components/ImageAddComponent/ImageAddComponent";
 
-export default function FloorPlanCard() {
+export default function FloorPlanCard({updateField}) {
   const [imageCnt, setImageCnt] = useState(0);
+  const [image,setImage]=useState(null)
+  const onSelectHandler = (e)=>{
+    setImageCnt(1)
+    setImage(e.target.files[0]);
+    updateField('floor_plan', image);
+    
+
+   }
   return (
     <div className="bg-white py-4 px-5 rounded-lg shadow-sm mt-6 mb-6">
       <div>Floor Plan</div>
@@ -23,11 +31,11 @@ export default function FloorPlanCard() {
       </div> */}
       <div className="mt-4 flex items-center flex-wrap justify-start">
         {new Array(imageCnt).fill(0).map((item, index) => (
-          <MediaCardComponent key={index} />
+          <MediaCardComponent key={index} image={image}/>
         ))}
-        <ImageAddComponent
-          onSelect={() => setImageCnt(imageCnt + 1)}
-        />
+       {imageCnt>0?<></>: <ImageAddComponent
+          onSelect={onSelectHandler}
+        />}
       </div>
     </div>
   );

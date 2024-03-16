@@ -1,9 +1,11 @@
-import react, {useState} from 'react';
+import react, {useEffect, useState} from 'react';
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function Select(props) {
-    const [value, setValue] = useState(props.options[0]);
+export default function Select({options,formData,updateField}) {
+    const [value, setValue] = useState(options[0]);
     const [showDrop, setShowDrop] = useState(false);
+    
+    
 
     return (
         <div className='relative'>
@@ -23,11 +25,12 @@ export default function Select(props) {
                     </div>
 
                     <div className='absolute top-[40px] w-full border border-primary rounded-lg'>
-                        {props.options.map((item, index) => (
+                        {options.map((item, index) => (
                             <div 
                                 className='text-[14px] px-3 py-1 rounded-lg  focus:border-gray-400 w-full text-dark flex justify-between items-center bg-white hover:bg-[#eeeeee]'
                                 key={index}
-                                onClick={() => {setValue(item); setShowDrop(false)}}
+                                onClick={() => {setValue(item); setShowDrop(false);updateField("status",item)} }
+                                
                             >
                                 {item}
                             </div>

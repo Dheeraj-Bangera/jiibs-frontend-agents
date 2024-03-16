@@ -20,9 +20,7 @@ export default function Buildings() {
             <AmenitiesCard />
           </div>
           <div>
-            <StatusCard 
-            items={['Active', 'Draft']}
-            />
+            <StatusCard items={["Active", "Draft"]} />
             <AmenitiesSelectCard />
             <ThumbnailCard />
           </div>

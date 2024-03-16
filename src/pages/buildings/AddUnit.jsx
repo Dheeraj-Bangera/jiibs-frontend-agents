@@ -8,25 +8,43 @@ import DealsCard from "./components/DealsCard";
 import OccupancyCard from "./components/OccupancyCad";
 import FloorPlanCard from "./components/FloorPlanCard";
 import AddUnit_Mobile from "./AddUnit_Mobile";
+import useFormState from "../../hooks/useFormState";
+import InformationCardUnit from "./components/InformationCardUnit";
+import ActionBarUnit from "./components/ActionBarUnit";
 
 export default function AddUnit() {
+  const [formData, updateField] = useFormState({
+    unit_name: "",
+    unit_no: "",
+    unit_size: "",
+    beds: "",
+    bath: "",
+    status: "Draft",
+    description: "",
+    thumbnail: null,
+    deals:"",
+    unit_price:"",
+    floor_plan:null,
+    building_id:"65f5c21537c0684e9832d88c",
+    userData:{id:"65e0d757790c1e6bb8281100"},
+  });
   return (
     <>
       <div className="pt-12 mx-6 w-full max-sm:pt-4 sm:block hidden">
-        <ActionBar />
+        <ActionBarUnit formData={formData} updateField={updateField}/>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
-            <InformationCard />
-            <MediaCard />
+            <InformationCardUnit formData={formData} updateField={updateField} />
+            <MediaCard  updateField={updateField}/>
           </div>
           <div>
             <StatusCard 
               items={['On Market', 'Leased', 'Draft']}
-            />
-            <DealsCard />
+              updateField={updateField}/>
+            <DealsCard  formData={formData} updateField={updateField}/>
             <OccupancyCard />
-            <FloorPlanCard />
-            <ThumbnailCard />
+            <FloorPlanCard updateField={updateField}/>
+            <ThumbnailCard updateField={updateField}/>
           </div>
         </div>
       </div>

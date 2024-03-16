@@ -11,8 +11,11 @@ export default function ActionBar({ title, formData }) {
     for (let key in formData) {
       if (typeof formData[key] === "object" && formData[key] !== null) {
           newFormData.append(key, JSON.stringify(formData[key]));
+          console.log("inside");
       } else {
           newFormData.append(key, formData[key]);
+          
+          console.log("inside");
       }
   }
   console.log(newFormData);

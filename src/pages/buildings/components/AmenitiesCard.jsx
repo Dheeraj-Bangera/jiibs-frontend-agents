@@ -18,7 +18,7 @@ export default function AmenitiesCard() {
       })}
       {/* {itemCount !== 3 && */}
       <div className="mt-3 flex">
-        <AddItem onClick={handleAddItem} />
+        <AddItem onClick={handleAddItem}/>
       </div>
       {/* } */}
     </div>

@@ -24,7 +24,7 @@ export default function AddBuilding(props) {
     year_of_build: "",
     status: "Active",
     description: "",
-    thumbnail: "",
+    thumbnail: null,
     userData:{id:"65e0d757790c1e6bb8281100"},
     media: null,
     amenities: [],
@@ -45,7 +45,7 @@ export default function AddBuilding(props) {
           <div>
             <StatusCard items={["Active", "Draft"]}  formData={formData} updateField={updateField}/>
             <AmenitiesSelectCard />
-            <ThumbnailCard />
+            <ThumbnailCard updateField={updateField}/>
           </div>
         </div>
       </div>

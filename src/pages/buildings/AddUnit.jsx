@@ -34,7 +34,7 @@ export default function AddUnit() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
             <InformationCardUnit formData={formData} updateField={updateField} />
-            <MediaCard />
+            <MediaCard  updateField={updateField}/>
           </div>
           <div>
             <StatusCard 

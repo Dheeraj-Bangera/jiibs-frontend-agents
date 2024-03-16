@@ -2,9 +2,15 @@ import React, {useState} from "react";
 import ThumbnailCardComponent from "./ThumbnailCardComponent";
 import ImageAddComponent from "../../../components/ImageAddComponent/ImageAddComponent";
 
-export default function ThumbnailCard() {
+export default function ThumbnailCard({updateField}) {
   const [imageShow, setImageShow] = useState(false);
+   const onSelectHandler = (e)=>{
+    setImageShow(true)
+    const selectedFile = e.target.files[0];
+    updateField('thumbnail', selectedFile);
+    
 
+   }
   return (
     <div className="bg-white py-4 px-5 rounded-lg shadow-sm mt-6 mb-6">
       <div>Thumbnail</div>
@@ -14,7 +20,7 @@ export default function ThumbnailCard() {
           {imageShow && <ThumbnailCardComponent />}
           {!imageShow &&
             <ImageAddComponent 
-              onSelect={() => setImageShow(true)}
+              onSelect={onSelectHandler}
             />
           }
         </div>

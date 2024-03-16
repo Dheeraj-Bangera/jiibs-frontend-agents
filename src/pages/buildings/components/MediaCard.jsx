@@ -9,6 +9,7 @@ export default function MediaCard({ updateField }) {
     setImageCnt(imageCnt + 1);
     const selectedFile = e.target.files[0];
     updateField('media', selectedFile);
+    console.log(updateField);
   };
   return (
     <div className="bg-white py-4 px-5 rounded-none sm:rounded-lg shadow-none sm:shadow-sm mt-6">

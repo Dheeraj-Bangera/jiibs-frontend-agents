@@ -25,7 +25,9 @@ export default function AddBuilding(props) {
     status: "Active",
     description: "",
     thumbnail: "",
-    userData:{id:"65e0d757790c1e6bb8281100"}
+    userData:{id:"65e0d757790c1e6bb8281100"},
+    media: null,
+    amenities: [],
   });
   return (
     <>
@@ -37,7 +39,7 @@ export default function AddBuilding(props) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
           <div className="col-span-1 lg:col-span-2">
             <InformationCard formData={formData} updateField={updateField} />
-            <MediaCard />
+            <MediaCard updateField={updateField} />
             <AmenitiesCard />
           </div>
           <div>

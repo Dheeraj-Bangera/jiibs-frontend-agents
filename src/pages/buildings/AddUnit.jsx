@@ -25,6 +25,7 @@ export default function AddUnit() {
     deals:"",
     unit_price:"",
     floor_plan:null,
+    building_id:"65f5c21537c0684e9832d88c",
     userData:{id:"65e0d757790c1e6bb8281100"},
   });
   return (
@@ -40,7 +41,7 @@ export default function AddUnit() {
             <StatusCard 
               items={['On Market', 'Leased', 'Draft']}
               updateField={updateField}/>
-            <DealsCard updateField={updateField}/>
+            <DealsCard  formData={formData} updateField={updateField}/>
             <OccupancyCard />
             <FloorPlanCard updateField={updateField}/>
             <ThumbnailCard updateField={updateField}/>

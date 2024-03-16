@@ -7,18 +7,19 @@ import axios from "axios";
 export default function ActionBar({ title, formData }) {
   // fix the problems in my code
   const postData = async () => {
+    // console.log(formData);
     const newFormData = new FormData();
-    newFormData.append(`building_name`, `${formData.building_name}`);
+   
     for (let key in formData) {
       // if (typeof formData[key] === "object" && formData[key] !== null) {
-      newFormData.append(key, JSON.stringify(formData[key]));
+      // newFormData.append(key, JSON.stringify(formData[key]));
       // } else {
-      // newFormData.append(key, formData[key]);
+      newFormData.append(key, formData[key]);
       // }
     }
-    for (let key in formData) {
-      console.log(`${key} : ${newFormData.get(key)}`);
-    }
+    // for (let key in formData) {
+    //   // console.log(`${key} : ${newFormData.get(key)}`);
+    // }
     try {
       const res = await axios.post(
         "http://localhost:8080/api/building/addBuilding",

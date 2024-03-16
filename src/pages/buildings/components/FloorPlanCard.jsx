@@ -4,10 +4,11 @@ import ImageAddComponent from "../../../components/ImageAddComponent/ImageAddCom
 
 export default function FloorPlanCard({updateField}) {
   const [imageCnt, setImageCnt] = useState(0);
+  const [image,setImage]=useState(null)
   const onSelectHandler = (e)=>{
     setImageCnt(1)
-    const selectedFile = e.target.files[0];
-    updateField('floor_plan', selectedFile);
+    setImage(e.target.files[0]);
+    updateField('floor_plan', image);
     
 
    }
@@ -30,7 +31,7 @@ export default function FloorPlanCard({updateField}) {
       </div> */}
       <div className="mt-4 flex items-center flex-wrap justify-start">
         {new Array(imageCnt).fill(0).map((item, index) => (
-          <MediaCardComponent key={index} />
+          <MediaCardComponent key={index} image={image}/>
         ))}
        {imageCnt>0?<></>: <ImageAddComponent
           onSelect={onSelectHandler}

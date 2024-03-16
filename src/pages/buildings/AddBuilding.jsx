@@ -40,7 +40,7 @@ export default function AddBuilding(props) {
           <div className="col-span-1 lg:col-span-2">
             <InformationCard formData={formData} updateField={updateField} />
             <MediaCard updateField={updateField} />
-            <AmenitiesCard />
+            <AmenitiesCard updateField={updateField} />
           </div>
           <div>
             <StatusCard items={["Active", "Draft"]}  formData={formData} updateField={updateField}/>

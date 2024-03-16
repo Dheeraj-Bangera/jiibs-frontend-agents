@@ -5,20 +5,30 @@ import right_arrow from "../../../assets/right_arrow.png";
 import axios from "axios"
 
 export default function ActionBarUnit({ title, formData }) {
-  const postData = ()=>{
-    console.log(formData);
-    const unitForm = new FormData();
-    unitForm.append(title, "hello")
+  const postData = async()=>{
+    const newFormData = new FormData();
+   
     for (let key in formData) {
-      if (typeof formData[key] === "object" && formData[key] !== null) {
-        unitForm.append(key, formData[key]);
-      } else {
-        unitForm.append(key, formData[key]);
-      }
-  }
-  console.log(unitForm);
-    // const res = await axios.post("http://localhost:8080/api/building/addBuilding",newFormData)
-    // alert(res.data.message)
+      // if (typeof formData[key] === "object" && formData[key] !== null) {
+      // newFormData.append(key, JSON.stringify(formData[key]));
+      // } else {
+      newFormData.append(key, formData[key]);
+      // }
+    }
+  //   for (let key in formData) {
+  //     console.log(`${key} : ${newFormData.get(key)}`);
+  //   }
+  // console.log(newFormData);
+  const res = await axios.post(
+    "http://localhost:8080/api/unit/addUnit",
+    newFormData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+    alert(res.data.message)
   }
   return (
     <div className="flex items-center w-full justify-between max-sm:justify-end max-sm:pr-[15px]">

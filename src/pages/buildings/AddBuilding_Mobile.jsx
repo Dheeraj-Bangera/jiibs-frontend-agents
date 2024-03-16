@@ -17,7 +17,7 @@ export default function AddBuilding_Mobile({ formData, updateField }) {
       <InformationCard formData={formData} updateField={updateField} />
       <AmenitiesSelectCard />
       <MediaCard />
-      <AmenitiesCard />
+      <AmenitiesCard  updateField={updateField}/>
       <ThumbnailCard />
     </div>
   );

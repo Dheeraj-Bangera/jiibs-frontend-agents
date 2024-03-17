@@ -14,14 +14,14 @@ export default function ValidInput({
     <div className="relative flex flex-col gap-[4px]">
       <label
         className="text-[14px] leading-[20px] text-[#2F2F2F] font-normal"
-        htmlFor={inputName}
+        htmlFor={inputName.split(" ").join("-")}
       >
         {inputName}
       </label>
       <input
         type={type ? (showPassword ? "text" : type) : "text"}
         placeholder={placeholder}
-        id={inputName}
+        id={inputName.split(" ").join("-")}
         className="text-[14px] px-[16px] h-[45px] sm:h-[44px] border border-[#626262] focus:border-black w-full text-blackdark rounded-lg outline-none"
         style={{ paddingRight: type === "password" && "40px" }}
       />

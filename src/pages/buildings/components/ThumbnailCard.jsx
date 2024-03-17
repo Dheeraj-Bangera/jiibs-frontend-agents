@@ -18,7 +18,7 @@ export default function ThumbnailCard({updateField}) {
       <div className="relative mx-[-1.2rem] mt-3 h-[2px] bg-secondary"></div>
       <div className="mt-2 relative">
         <div className="mt-4 flex items-center flex-wrap justify-start">
-          {imageShow && <ThumbnailCardComponent image={image}/>}
+          {imageShow && <ThumbnailCardComponent image={image} setImage={setImage} />}
           {!imageShow &&
             <ImageAddComponent 
               onSelect={onSelectHandler}

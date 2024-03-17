@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import placeholder1 from "../../../assets/placeholder1.png";
 import LivingRoomModal from "../../../components/LivingRoomModal/LivingRoomModal";
 
-export default function MediaCardComponent({image}) {
+export default function MediaCardComponent({image, setImage}) {
   // const [isOpen, setIsOpen] = useState(false);
+
+  const onChangeHandler = (e)=>{
+    setImage(e.target.files[0])
+  }
 
   return (
     <div className="relative border border-primary rounded-lg mr-3 sm:mr-5 mb-3 w-[146px] h-[146px] sm:w-[146px] sm:h-[146px] p-1 sm:p-2">
@@ -15,6 +19,7 @@ export default function MediaCardComponent({image}) {
       <input 
         type='file'
         className='absolute left-0 top-0 w-full h-full opacity-0'
+        onChange={onChangeHandler}
       />
       {/* <LivingRoomModal isOpen={isOpen} setIsOpen={setIsOpen} /> */}
     </div>

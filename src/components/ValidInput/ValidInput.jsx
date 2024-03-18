@@ -3,11 +3,13 @@ import ValidationErrorIcon from "../Icons/ValidationErrorIcon";
 import EyeIcon from "../Icons/EyeIcon";
 
 export default function ValidInput({
+  value,
+  setValue,
   placeholder,
   error,
-  errorColor,
   type,
   inputName,
+  onBlurHandler,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -24,6 +26,9 @@ export default function ValidInput({
         id={inputName.split(" ").join("-")}
         className="text-[14px] px-[16px] h-[45px] sm:h-[44px] border border-[#626262] focus:border-black w-full text-blackdark rounded-lg outline-none"
         style={{ paddingRight: type === "password" && "40px" }}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={(e) => onBlurHandler(e.target.value)}
       />
       {type === "password" && (
         <div
@@ -34,9 +39,9 @@ export default function ValidInput({
         </div>
       )}
       {error && error.length !== 0 && (
-        <div className="flex gap-x-3 mt-3 items-center">
-          <ValidationErrorIcon color={errorColor} />
-          <div className="text-[14px]" style={{ color: errorColor }}>
+        <div className="flex gap-x-3  items-center">
+          <ValidationErrorIcon color={"#EE352E"} />
+          <div className="text-[14px]" style={{ color: "#EE352E" }}>
             {error}
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import HomeIcon from "./HomeIcon";
 import MenuIcon from "./MenuIcon";
 import BuildingIcon from "../Icons/BuildingIcon";
@@ -8,10 +8,11 @@ import UsersIcon from "../Icons/UsersIcon";
 import HelpIcon from "../Icons/HelpIcon";
 import avatar from "../../assets/avatar.png";
 import LogOutIcon from "../Icons/LogOutIcon";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function MobileNavigatoinBar() {
+  const { user, isLoggedIn, logout } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const [showFilterSubMenu, setShowFilterSubMenu] = useState(false);
   const navigate = useNavigate();
@@ -66,18 +67,30 @@ export default function MobileNavigatoinBar() {
               </div>
               <hr className="absolute left-0 right-0" />
               <div className="relative flex items-center px-1 mt-3">
-                <div className="flex items-center">
-                  <img src={avatar} width={30} height={30} />
-                  <div className="ml-4">
-                    <div className="font-semibold text-[16px]">
-                      Anagram Nomad
+                {isLoggedIn && (
+                  <>
+                    <div className="flex items-center">
+                      <img src={avatar} width={30} height={30} />
+                      <div className="ml-4">
+                        <div className="font-semibold text-[16px]">
+                          {user?.name}
+                        </div>
+                        <button
+                          onClick={logout}
+                          className="text-[12px] cursor-pointer"
+                        >
+                          Logout
+                        </button>
+                      </div>
                     </div>
-                    <div className="text-[12px]">Logout</div>
-                  </div>
-                </div>
-                <div className="absolute right-0">
-                  <LogOutIcon />
-                </div>
+                    <button
+                      className="absolute right-0 cursor-pointer h-full flex items-center justify-center w-[50px]"
+                      onClick={logout}
+                    >
+                      <LogOutIcon />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>

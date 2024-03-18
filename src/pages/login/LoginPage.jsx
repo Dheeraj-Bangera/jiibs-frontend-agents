@@ -1,11 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ValidInput from "../../components/ValidInput/ValidInput";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(null);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(null);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const submitHandler = () => {
+    if (buttonDisabled) return;
+    login({ name: "Rohan Kumar" });
+    navigate("/");
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(email) || email.length == 0) {
+      setEmailError(null);
+      if (!passwordError) setButtonDisabled(false);
+    } else {
+      setEmailError("Please enter a valid email");
+      setButtonDisabled(true);
+    }
+  };
+
+  const validatePassword = (pass) => {
+    if (pass.length > 3 || pass.length == 0) {
+      setPasswordError(null);
+      if (!emailError) setButtonDisabled(false);
+    } else {
+      setPasswordError("Password should be more than 3 digits");
+      setButtonDisabled(true);
+    }
+  };
   return (
     <main className="w-full h-[100vh] flex items-center justify-center">
-      <div className="sm:w-[500px] w-full sm:h-[560px] h-full sm:py-[48px] sm:px-[40px] py-[40px] px-[30px] flex flex-col items-start gap-[36px] bg-white border-[1px] sm:border-solid sm:border-black sm:rounded-[16px] sm:shadow-[20px_28px_210px_rgba(218,218,218,0.94)]">
+      <div className="sm:w-[500px] w-full sm:h-[590px] h-full sm:py-[48px] sm:px-[40px] py-[40px] px-[30px] flex flex-col items-start gap-[36px] bg-white border-[1px] sm:border-solid sm:border-black sm:rounded-[16px] sm:shadow-[20px_28px_210px_rgba(218,218,218,0.94)]">
         <div className="flex flex-col gap-[30px] w-full justify-start">
           <h1 className="text-[32px] leading-[40px] font-bold text-blue">
             JIIBS.
@@ -20,9 +56,31 @@ const LoginPage = () => {
               </h3>
             </div>
             <div className="flex flex-col gap-[20px] justify-start">
-              <ValidInput type="email" inputName="Email" placeholder="" />
-              <ValidInput type="password" inputName="Password" placeholder="" />
-              <button className="bg-primary text-white text-[16px] font-semibold w-full hover:bg-[#1a96b7] h-[46px] sm:h-[44px] rounded-[10px]">
+              <ValidInput
+                type="email"
+                inputName="Email"
+                placeholder=""
+                value={email}
+                setValue={setEmail}
+                error={emailError}
+                onBlurHandler={validateEmail}
+              />
+              <ValidInput
+                type="password"
+                inputName="Password"
+                placeholder=""
+                value={password}
+                setValue={setPassword}
+                error={passwordError}
+                onBlurHandler={validatePassword}
+              />
+              <button
+                className={`bg-primary text-white text-[16px] font-semibold w-full h-[46px] sm:h-[44px] rounded-[10px] ${
+                  !buttonDisabled && "hover:bg-[#1a96b7]"
+                } `}
+                onClick={submitHandler}
+                disabled={buttonDisabled}
+              >
                 Submit
               </button>
             </div>

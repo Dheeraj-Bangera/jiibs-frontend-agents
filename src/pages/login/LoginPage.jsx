@@ -14,6 +14,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const submitHandler = () => {
+    //TODO: complete submit handler with actual login
     if (buttonDisabled) return;
     login({ name: "Rohan Kumar" });
     navigate("/");

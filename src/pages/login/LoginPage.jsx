@@ -8,14 +8,13 @@ const LoginPage = () => {
   const [emailError, setEmailError] = useState(null);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(null);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const submitHandler = () => {
     //TODO: complete submit handler with actual login
-    if (buttonDisabled) return;
+    if (emailError || passwordError) return;
     login({ name: "Rohan Kumar" });
     navigate("/");
   };
@@ -24,20 +23,16 @@ const LoginPage = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email) || email.length == 0) {
       setEmailError(null);
-      if (!passwordError) setButtonDisabled(false);
     } else {
       setEmailError("Please enter a valid email");
-      setButtonDisabled(true);
     }
   };
 
   const validatePassword = (pass) => {
     if (pass.length > 3 || pass.length == 0) {
       setPasswordError(null);
-      if (!emailError) setButtonDisabled(false);
     } else {
       setPasswordError("Password should be more than 3 digits");
-      setButtonDisabled(true);
     }
   };
   return (
@@ -76,18 +71,16 @@ const LoginPage = () => {
                 onBlurHandler={validatePassword}
               />
               <button
-                className={`bg-primary text-white text-[16px] font-semibold w-full h-[46px] sm:h-[44px] rounded-[10px] ${
-                  !buttonDisabled && "hover:bg-[#1a96b7]"
-                } `}
+                className="bg-primary text-white text-[16px] font-semibold w-full h-[46px] sm:h-[44px] rounded-[10px] hover:bg-[#1a96b7]"
                 onClick={submitHandler}
-                disabled={buttonDisabled}
               >
+                {/* TODO: implement loading state */}
                 Submit
               </button>
             </div>
           </div>
         </div>
-        <div className="flex flex-col text-[12px] mt-auto">
+        <div className="flex flex-col text-[12px] sm:mt-0 mt-auto">
           <p className="mb-[12px]">
             By proceeding, you agree to the{" "}
             <Link to="#" className="text-blue">

@@ -12,9 +12,10 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          <Route element={<PrivateRoutes />}>
-            <Route path="/reset-password" element={<ResetPassword />} />
-          </Route>
+          {/* TODO: uncomment these routes, so that reset password becomes private route */}
+          {/* <Route element={<PrivateRoutes />}> */}
+          <Route path="/reset-password" element={<ResetPassword />} />
+          {/* </Route> */}
           <Route path="*" element={<MainLayoutRoutes />} />
         </Routes>
       </AuthProvider>

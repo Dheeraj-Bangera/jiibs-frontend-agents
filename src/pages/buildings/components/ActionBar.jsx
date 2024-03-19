@@ -3,26 +3,19 @@ import Button from "../../../components/Button/Button";
 import left_arrow from "../../../assets/left_arrow.png";
 import right_arrow from "../../../assets/right_arrow.png";
 import axios from "axios";
+import { BASE_API_URL } from "../../../constants";
 
 export default function ActionBar({ title, formData }) {
-  // fix the problems in my code
   const postData = async () => {
-    // console.log(formData);
     const newFormData = new FormData();
-   
+
     for (let key in formData) {
-      // if (typeof formData[key] === "object" && formData[key] !== null) {
-      // newFormData.append(key, JSON.stringify(formData[key]));
-      // } else {
       newFormData.append(key, formData[key]);
-      // }
     }
-    // for (let key in formData) {
-    //   // console.log(`${key} : ${newFormData.get(key)}`);
-    // }
+
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/building/addBuilding",
+        `${BASE_API_URL}/api/building/addBuilding`,
         newFormData,
         {
           headers: {

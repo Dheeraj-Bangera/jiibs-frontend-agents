@@ -22,7 +22,7 @@ export default function ActionBar({ title, formData }) {
     // }
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/building/addBuilding",
+        "http://3.93.206.60:8080/api/building/addBuilding",
         newFormData,
         {
           headers: {

@@ -24,7 +24,7 @@ export default function AmenitiesCard({updateField}) {
       <div className="relative mx-[-1.2rem] mt-3 h-[2px] bg-secondary"></div>
 
       {new Array(itemCount).fill(0).map((_, index) => {
-        return <AmenityItem key={"amneties" + index} index={index}amenities={amenities} setAmenities={setAmenities}
+        return <AmenityItem key={"amneties" + index} index={index} itemCount={itemCount}amenities={amenities} setAmenities={setAmenities}
         />;
       })}
       {/* {itemCount !== 3 && */}

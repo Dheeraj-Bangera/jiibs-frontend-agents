@@ -7,7 +7,7 @@ import placeholder1 from "../../../assets/placeholder1.png";
 export default function AmenityItem({setAmenities,amenities, index}) {
 
   const [showImg, setShowImg] = useState(false);
-  const [amenity, setAmenity] =useState({image:null,title:"",subtitle:""});
+  const [amenity, setAmenity] = useState({image:null,title:"",subtitle:""});
   useEffect(() => {
     
     setAmenities((prev)=>{

@@ -20,7 +20,7 @@ export default function ActionBarUnit({ title, formData }) {
   //   }
   // console.log(newFormData);
   const res = await axios.post(
-    "http://localhost:8080/api/unit/addUnit",
+    "http://3.93.206.60:8080/api/unit/addUnit",
     newFormData,
     {
       headers: {

@@ -15,7 +15,7 @@ export default function ActionBar({ title, formData }) {
 
     try {
       const res = await axios.post(
-        `${BASE_API_URL}/api/building/addBuilding`,
+        `${BASE_API_URL}/building/addBuilding`,
         newFormData,
         {
           headers: {

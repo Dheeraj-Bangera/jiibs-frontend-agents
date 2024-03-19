@@ -14,7 +14,7 @@ export default function ActionBarUnit({ title, formData }) {
     }
 
     const res = await axios.post(
-      `${BASE_API_URL}/api/unit/addUnit`,
+      `${BASE_API_URL}/unit/addUnit`,
       newFormData,
       {
         headers: {

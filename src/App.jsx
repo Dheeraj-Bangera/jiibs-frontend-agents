@@ -1,28 +1,24 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import AddUnit from "./pages/buildings/AddUnit";
-import Units from './pages/units/Units';
-import NavBar from "./components/NavBar/NavBar";
-import AddBuilding from "./pages/buildings/AddBuilding";
+import MainLayoutRoutes from "./MainLayoutRoutes";
+import LoginPage from "./pages/login/LoginPage";
+import ResetPassword from "./pages/password-reset/ResetPassword";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <div className="flex mb-8 sm:mb-0 pt-2 sm:pt-0 bg-[#F8F8F9] h-[100vh]">
-        <div className="relative h-[100vh] w-72 min-w-[18rem] max-w-[18rem] pt-12 px-4 hidden sm:block bg-[#F8F8F9]"></div>
+      <AuthProvider>
         <Routes>
-          <Route path="/building" element={<AddBuilding type={'edit'} />} />
-          <Route path="/units" element={<Units />} />
-          <Route path="/add_unit" element={<AddUnit />} />
-          <Route
-            path="*"
-            element={
-              <p className="pt-12 mx-4 w-full text-center">Coming soon.</p>
-            }
-          />
+          <Route path="/login" element={<LoginPage />} />
+          {/* TODO: uncomment these routes, so that reset password becomes private route */}
+          {/* <Route element={<PrivateRoutes />}> */}
+          <Route path="/reset-password" element={<ResetPassword />} />
+          {/* </Route> */}
+          <Route path="*" element={<MainLayoutRoutes />} />
         </Routes>
-      </div>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

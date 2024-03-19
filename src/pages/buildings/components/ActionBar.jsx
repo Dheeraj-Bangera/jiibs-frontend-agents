@@ -2,13 +2,41 @@ import React from "react";
 import Button from "../../../components/Button/Button";
 import left_arrow from "../../../assets/left_arrow.png";
 import right_arrow from "../../../assets/right_arrow.png";
+import axios from "axios";
+import { BASE_API_URL } from "../../../constants";
 
-export default function ActionBar({ title }) {
+export default function ActionBar({ title, formData }) {
+  const postData = async () => {
+    const newFormData = new FormData();
+
+    for (let key in formData) {
+      newFormData.append(key, formData[key]);
+    }
+
+    try {
+      const res = await axios.post(
+        `${BASE_API_URL}/api/building/addBuilding`,
+        newFormData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      alert(res.data.message);
+    } catch (error) {
+      console.error("Error uploading data:", error);
+    }
+  };
   return (
     <div className="flex items-center w-full justify-between max-sm:justify-end max-sm:pr-[15px]">
-      <div className="text-[16px] sm:text-[26px] font-semibold max-sm:hidden sm:leading-[80%]">{title}</div>
+      <div className="text-[16px] sm:text-[26px] font-semibold max-sm:hidden sm:leading-[80%]">
+        {title}
+      </div>
       <div className="flex gap-x-4">
-        <Button style="secondary">Publish</Button>
+        <Button style="secondary" onClick={postData}>
+          Publish
+        </Button>
         <Button style="secondary">View</Button>
         <div className="">
           <button

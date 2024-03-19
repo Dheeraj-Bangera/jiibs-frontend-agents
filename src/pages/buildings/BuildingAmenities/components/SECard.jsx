@@ -44,7 +44,7 @@ export default function SECard() {
         <div className="text-[16px] mt-4">Meta Description</div>
         <textarea
           rows={8}
-          multiple="true"
+          multiple={true}
           className="text-[14px] px-3 py-1 mt-2 border border-primary focus:border-gray-400 w-full text-dark rounded-lg outline-none"
           value={description}
           onChange={(e) => setDescription(e.target.value)}

@@ -7,17 +7,15 @@ import AmenitiesSelectCard from "./components/AmenitiesSelectCard";
 import StatusCard from "./components/StatusCard";
 import ThumbnailCard from "./components/ThumbnailCard";
 
-export default function Buildings_Mobile() {
+export default function Buildings_Mobile({ formData, updateField }) {
   return (
     <div className="pt-4 mx-0 w-full">
       <div className="mr-6">
         <ActionBar />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 mt-6">
-        <StatusCard 
-          items={['Active', 'Draft']}
-        />
-        <InformationCard />
+        <StatusCard items={["Active", "Draft"]} />
+        <InformationCard formData={formData} updateField={updateField} />
         <AmenitiesSelectCard />
         <MediaCard />
         <AmenitiesCard />
